@@ -11,7 +11,7 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        withAnimation { AsyncImageView(name: "ykIZB9dYBIKV13k5igGFncT5th6")
+        withAnimation { AsyncImage(name: "ykIZB9dYBIKV13k5igGFncT5th6")
             .frame(width: 320.0, height: 480.0, alignment: Alignment.center) }
     }
 }

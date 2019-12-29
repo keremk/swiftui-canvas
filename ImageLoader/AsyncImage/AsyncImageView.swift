@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct AsyncImageView: View {
+struct AsyncImage: View {
     let imageName: String
     let placeholder = UIImage(named: "placeholder.jpg")!.cgImage!
 
@@ -35,7 +35,7 @@ struct AsyncImageView: View {
 struct AsyncImageView_Previews: PreviewProvider {
     static var previews: some View {
         let config = ImageLoaderConfig(loader: PreviewLoader())
-        let imageView = AsyncImageView(name: "ykIZB9dYBIKV13k5igGFncT5th6").environmentObject(config)
+        let imageView = AsyncImage(name: "ykIZB9dYBIKV13k5igGFncT5th6").environmentObject(config)
         return imageView.frame(width: 390.0, height: 585.0, alignment: Alignment.center)
     }
 }

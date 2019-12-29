@@ -7,6 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5D3516DE23B91A9E00894BB8 /* PreviewLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3516DD23B91A9E00894BB8 /* PreviewLoader.swift */; };
+		5D3516DF23B91A9E00894BB8 /* PreviewLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3516DD23B91A9E00894BB8 /* PreviewLoader.swift */; };
+		5D3516E023B91A9E00894BB8 /* PreviewLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3516DD23B91A9E00894BB8 /* PreviewLoader.swift */; };
+		5D3516E223B91ADD00894BB8 /* ImageLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3516E123B91ADD00894BB8 /* ImageLoadable.swift */; };
+		5D3516E323B91ADD00894BB8 /* ImageLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3516E123B91ADD00894BB8 /* ImageLoadable.swift */; };
+		5D3516E423B91ADD00894BB8 /* ImageLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3516E123B91ADD00894BB8 /* ImageLoadable.swift */; };
+		5D3516E623B91B3A00894BB8 /* AsyncLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3516E523B91B3A00894BB8 /* AsyncLoader.swift */; };
+		5D3516E723B91B3A00894BB8 /* AsyncLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3516E523B91B3A00894BB8 /* AsyncLoader.swift */; };
+		5D3516E823B91B3A00894BB8 /* AsyncLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3516E523B91B3A00894BB8 /* AsyncLoader.swift */; };
+		5D3516EA23B91B7F00894BB8 /* ImageLoaderConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3516E923B91B7F00894BB8 /* ImageLoaderConfig.swift */; };
+		5D3516EB23B91B7F00894BB8 /* ImageLoaderConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3516E923B91B7F00894BB8 /* ImageLoaderConfig.swift */; };
+		5D3516EC23B91B7F00894BB8 /* ImageLoaderConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3516E923B91B7F00894BB8 /* ImageLoaderConfig.swift */; };
 		5D9B292823B610A300589EAB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9B292723B610A300589EAB /* AppDelegate.swift */; };
 		5D9B292A23B610A300589EAB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9B292923B610A300589EAB /* SceneDelegate.swift */; };
 		5D9B292C23B610A300589EAB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9B292B23B610A300589EAB /* ContentView.swift */; };
@@ -38,6 +50,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5D3516DD23B91A9E00894BB8 /* PreviewLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewLoader.swift; sourceTree = "<group>"; };
+		5D3516E123B91ADD00894BB8 /* ImageLoadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoadable.swift; sourceTree = "<group>"; };
+		5D3516E523B91B3A00894BB8 /* AsyncLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncLoader.swift; sourceTree = "<group>"; };
+		5D3516E923B91B7F00894BB8 /* ImageLoaderConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoaderConfig.swift; sourceTree = "<group>"; };
 		5D9B292423B610A300589EAB /* ImageLoader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImageLoader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D9B292723B610A300589EAB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5D9B292923B610A300589EAB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -80,6 +96,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5D3516DC23B91A6E00894BB8 /* AsyncImage */ = {
+			isa = PBXGroup;
+			children = (
+				5D3516DD23B91A9E00894BB8 /* PreviewLoader.swift */,
+				5D3516E123B91ADD00894BB8 /* ImageLoadable.swift */,
+				5D3516E523B91B3A00894BB8 /* AsyncLoader.swift */,
+				5D3516E923B91B7F00894BB8 /* ImageLoaderConfig.swift */,
+				5D9B295723B6110100589EAB /* AsyncImageView.swift */,
+			);
+			path = AsyncImage;
+			sourceTree = "<group>";
+		};
 		5D9B291B23B610A300589EAB = {
 			isa = PBXGroup;
 			children = (
@@ -103,6 +131,7 @@
 		5D9B292623B610A300589EAB /* ImageLoader */ = {
 			isa = PBXGroup;
 			children = (
+				5D3516DC23B91A6E00894BB8 /* AsyncImage */,
 				5D9B292723B610A300589EAB /* AppDelegate.swift */,
 				5D9B292923B610A300589EAB /* SceneDelegate.swift */,
 				5D9B292B23B610A300589EAB /* ContentView.swift */,
@@ -110,7 +139,6 @@
 				5D9B293223B610A800589EAB /* LaunchScreen.storyboard */,
 				5D9B293523B610A800589EAB /* Info.plist */,
 				5D9B292F23B610A800589EAB /* Preview Content */,
-				5D9B295723B6110100589EAB /* AsyncImageView.swift */,
 			);
 			path = ImageLoader;
 			sourceTree = "<group>";
@@ -273,6 +301,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				5D9B292823B610A300589EAB /* AppDelegate.swift in Sources */,
+				5D3516E223B91ADD00894BB8 /* ImageLoadable.swift in Sources */,
+				5D3516EA23B91B7F00894BB8 /* ImageLoaderConfig.swift in Sources */,
+				5D3516E623B91B3A00894BB8 /* AsyncLoader.swift in Sources */,
+				5D3516DE23B91A9E00894BB8 /* PreviewLoader.swift in Sources */,
 				5D9B292A23B610A300589EAB /* SceneDelegate.swift in Sources */,
 				5D9B295823B6110100589EAB /* AsyncImageView.swift in Sources */,
 				5D9B292C23B610A300589EAB /* ContentView.swift in Sources */,
@@ -283,6 +315,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D3516E723B91B3A00894BB8 /* AsyncLoader.swift in Sources */,
+				5D3516DF23B91A9E00894BB8 /* PreviewLoader.swift in Sources */,
+				5D3516EB23B91B7F00894BB8 /* ImageLoaderConfig.swift in Sources */,
+				5D3516E323B91ADD00894BB8 /* ImageLoadable.swift in Sources */,
 				5D9B295923B6110100589EAB /* AsyncImageView.swift in Sources */,
 				5D9B293F23B610A800589EAB /* ImageLoaderTests.swift in Sources */,
 			);
@@ -292,6 +328,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D3516E823B91B3A00894BB8 /* AsyncLoader.swift in Sources */,
+				5D3516E023B91A9E00894BB8 /* PreviewLoader.swift in Sources */,
+				5D3516EC23B91B7F00894BB8 /* ImageLoaderConfig.swift in Sources */,
+				5D3516E423B91ADD00894BB8 /* ImageLoadable.swift in Sources */,
 				5D9B295A23B6110100589EAB /* AsyncImageView.swift in Sources */,
 				5D9B294A23B610A800589EAB /* ImageLoaderUITests.swift in Sources */,
 			);

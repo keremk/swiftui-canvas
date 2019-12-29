@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import Combine
 
 final class ImageStore {
     typealias _ImageDictionary = [String: CGImage]
@@ -39,7 +40,7 @@ final class ImageStore {
     }
 }
 
-protocol ImageResolver {
+protocol ImageLoadable {
     func load(imageName: String) -> CGImage?
     var delegate: ImageLoaded? { get set }
 }
@@ -48,7 +49,7 @@ protocol ImageLoaded: class {
     func didLoad(image: CGImage?)
 }
 
-final class PreviewLoader: ImageResolver {
+final class PreviewLoader: ImageLoadable {
     weak var delegate: ImageLoaded?
 
     func load(imageName: String) -> CGImage? {
@@ -56,19 +57,28 @@ final class PreviewLoader: ImageResolver {
     }
 }
 
-final class Loader: ImageResolver {
-    private var task: URLSessionDataTask?
+final class Loader: ImageLoadable {
     weak var delegate: ImageLoaded?
+    var cancelable: AnyCancellable? = nil
 
     func load(imageName: String) -> CGImage? {
         if let url = URL(string: "https://image.tmdb.org/t/p/w780/\(imageName).jpg") {
-            task = URLSession.shared.dataTask(with: url, completionHandler: { data, _, _ in
-                DispatchQueue.main.async {
-                    let image = self.imageFromData(data: data)
-                    self.delegate?.didLoad(image: image)
-                }
-            })
-            task?.resume()
+            cancelable = URLSession.shared.dataTaskPublisher(for: url)
+                .receive(on: RunLoop.main)
+                .retry(2)
+                .sink(
+                    receiveCompletion: { completion in
+                        switch completion {
+                        case .finished:
+                            break
+                        case .failure(_):
+                            // TODO: Log error
+                            break
+                        }
+                    },
+                    receiveValue:  { (data, response) in
+                        self.delegate?.didLoad(image: self.imageFromData(data: data))
+                })
         }
         return nil
     }
@@ -84,16 +94,16 @@ final class Loader: ImageResolver {
         return image
     }
     deinit {
-        task?.cancel()
+        cancelable?.cancel()
     }
 }
 
 final class ImageLoaderConfig: ObservableObject, ImageLoaded {
-    var loader: ImageResolver
+    var loader: ImageLoadable
 
     @Published var image: CGImage?
 
-    init(loader: ImageResolver) {
+    init(loader: ImageLoadable) {
         self.loader = loader
         self.loader.delegate = self
     }
@@ -136,6 +146,6 @@ struct AsyncImageView_Previews: PreviewProvider {
     static var previews: some View {
         let config = ImageLoaderConfig(loader: PreviewLoader())
         let imageView = AsyncImageView(name: "ykIZB9dYBIKV13k5igGFncT5th6").environmentObject(config)
-        return imageView
+        return imageView.frame(width: 390.0, height: 585.0, alignment: Alignment.center)
     }
 }

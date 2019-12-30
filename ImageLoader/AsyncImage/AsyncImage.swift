@@ -11,22 +11,18 @@ import SwiftUI
 struct AsyncImage: View {
     let imageName: String
     let placeholder = UIImage(named: "placeholder.jpg")!.cgImage!
-
-    @EnvironmentObject var config:ImageLoaderConfig
-    
-    init(name: String) {
-        self.imageName = name
-    }
-    
+        
+    @EnvironmentObject private var loader:ImageLoaderConfig
+        
     var image: CGImage? {
         guard
-            let loadedImage = config.image
+            let loadedImage = loader.image
         else {
-            return config.load(imageName: imageName)
+            return loader.load(imageName: imageName)
         }
         return loadedImage
     }
-        
+    
     var body: some View {
         Image(image ?? placeholder, scale: 1.0, label: Text("")).resizable()
     }
@@ -35,7 +31,8 @@ struct AsyncImage: View {
 struct AsyncImageView_Previews: PreviewProvider {
     static var previews: some View {
         let config = ImageLoaderConfig(loader: PreviewLoader())
-        let imageView = AsyncImage(name: "ykIZB9dYBIKV13k5igGFncT5th6").environmentObject(config)
-        return imageView.frame(width: 390.0, height: 585.0, alignment: Alignment.center)
+        return AsyncImage(imageName: "ykIZB9dYBIKV13k5igGFncT5th6")
+            .frame(width: 390.0, height: 585.0, alignment: Alignment.center)
+            .environmentObject(config)
     }
 }

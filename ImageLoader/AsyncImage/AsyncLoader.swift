@@ -8,6 +8,7 @@
 
 import SwiftUI
 import Combine
+import os.log
 
 final class AsyncLoader: ImageLoadable {
     weak var delegate: ImageLoaded?
@@ -24,7 +25,7 @@ final class AsyncLoader: ImageLoadable {
                         case .finished:
                             break
                         case .failure(_):
-                            // TODO: Log error
+                            os_log("Error loading image %{PUBLIC}@", log: .default, type: .error, imageName)
                             break
                         }
                     },

@@ -8,16 +8,19 @@
 
 import SwiftUI
 
-
 struct ContentView: View {
+    var movies: [Movie]
+    
     var body: some View {
-        withAnimation { AsyncImage(name: "ykIZB9dYBIKV13k5igGFncT5th6")
-            .frame(width: 320.0, height: 480.0, alignment: Alignment.center) }
+        MovieList(movies: movies)
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView().environmentObject(ImageLoaderConfig(loader: PreviewLoader()))
+        ContentView(movies: [
+                Movie(id: 1, title: "Transformers", posterName: "ykIZB9dYBIKV13k5igGFncT5th6"),
+                Movie(id: 2, title: "Angel Has Fallen", posterName: "fapXd3v9qTcNBTm39ZC4KUVQDNf")])
+            .environmentObject(ImageLoaderConfig(loader: PreviewLoader()))
     }
 }

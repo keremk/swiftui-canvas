@@ -38,7 +38,7 @@ final class PreviewLoader: ImageLoadable {
         }
     }
     
-    weak var delegate: ImageLoaded?
+    weak var delegate: ImageResolverDelegate?
 
     func load(imageName: String) -> CGImage? {
         return PreviewImageStore.shared.image(name: imageName)

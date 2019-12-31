@@ -11,7 +11,7 @@ import Combine
 import os.log
 
 final class AsyncLoader: ImageLoadable {
-    weak var delegate: ImageLoaded?
+    weak var delegate: ImageResolverDelegate?
     var cancelable: AnyCancellable? = nil
 
     func load(imageName: String) -> CGImage? {

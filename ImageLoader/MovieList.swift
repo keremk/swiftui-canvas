@@ -26,6 +26,6 @@ struct MovieList_Previews: PreviewProvider {
             movies: [
                 Movie(id: 1, title: "Transformers", posterName: "ykIZB9dYBIKV13k5igGFncT5th6"),
                 Movie(id: 2, title: "Angel Has Fallen", posterName: "fapXd3v9qTcNBTm39ZC4KUVQDNf")]
-        ).environmentObject(ImageLoaderConfig(loader: PreviewLoader()))
+        ).environmentObject(EnvironmentConfig(mode: .PreviewMode))
     }
 }

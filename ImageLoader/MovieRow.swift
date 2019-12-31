@@ -29,6 +29,6 @@ struct MovieRow_Previews: PreviewProvider {
             MovieRow(movie: movie1)
         }
         .previewLayout(.fixed(width: 400, height: 160))
-        .environmentObject(ImageLoaderConfig(loader: PreviewLoader()))
+        .environmentObject(EnvironmentConfig(mode: .PreviewMode))
     }
 }

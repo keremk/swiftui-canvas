@@ -11,16 +11,17 @@ import SwiftUI
 struct AsyncImage: View {
     let imageName: String
     let placeholder = UIImage(named: "placeholder.jpg")!.cgImage!
-        
-    @EnvironmentObject private var loader:ImageLoaderConfig
-        
+    
+    @EnvironmentObject private var env: EnvironmentConfig
+    @ObservedObject private var loader:ImageResolver
+    
+    init(imageName: String) {
+        self.imageName = imageName
+        self.loader = ImageResolver()
+    }
+    
     var image: CGImage? {
-        guard
-            let loadedImage = loader.image
-        else {
-            return loader.load(imageName: imageName)
-        }
-        return loadedImage
+        return loader.load(imageName: imageName, mode: env.mode)
     }
     
     var body: some View {
@@ -28,11 +29,10 @@ struct AsyncImage: View {
     }
 }
 
-struct AsyncImageView_Previews: PreviewProvider {
+struct AsyncImage_Previews: PreviewProvider {
     static var previews: some View {
-        let config = ImageLoaderConfig(loader: PreviewLoader())
         return AsyncImage(imageName: "ykIZB9dYBIKV13k5igGFncT5th6")
             .frame(width: 390.0, height: 585.0, alignment: Alignment.center)
-            .environmentObject(config)
+            .environmentObject(EnvironmentConfig(mode: .PreviewMode))
     }
 }

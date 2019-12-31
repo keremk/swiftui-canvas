@@ -10,9 +10,5 @@ import SwiftUI
 
 protocol ImageLoadable {
     func load(imageName: String) -> CGImage?
-    var delegate: ImageLoaded? { get set }
-}
-
-protocol ImageLoaded: class {
-    func didLoad(image: CGImage?)
+    var delegate: ImageResolverDelegate? { get set }
 }

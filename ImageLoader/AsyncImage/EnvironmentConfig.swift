@@ -10,8 +10,10 @@ import Foundation
 
 final class EnvironmentConfig: ObservableObject {
     enum Mode {
-        case PreviewMode
         case RuntimeMode
+#if DEBUG
+        case PreviewMode
+#endif
     }
 
     let mode: Mode

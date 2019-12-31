@@ -26,9 +26,11 @@ final class ImageResolver: ObservableObject, ImageResolverDelegate {
         
         var loader: ImageLoadable
         switch mode {
+#if DEBUG
         case .PreviewMode:
             loader = PreviewLoader()
             break
+#endif
         case .RuntimeMode:
             loader = AsyncLoader()
             break

@@ -13,7 +13,7 @@ struct AsyncImage: View {
     let placeholder = UIImage(named: "placeholder.jpg")!.cgImage!
     
     @EnvironmentObject private var env: EnvironmentConfig
-    @ObservedObject private var loader:ImageResolver
+    @ObservedObject private var loader: ImageResolver
     
     init(imageName: String) {
         self.imageName = imageName

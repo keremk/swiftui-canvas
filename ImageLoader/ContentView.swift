@@ -10,14 +10,14 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject private var env: EnvironmentConfig
-    @ObservedObject var movieResults: MovieResults
+    @ObservedObject var movieCollection: MovieCollection
     
     init() {
-        self.movieResults = MovieResults()
+        self.movieCollection = MovieCollection()
     }
     
     var movies: [Movie] {
-        return movieResults.fetchResults(mode: env.mode)
+        return movieCollection.fetchMovies(mode: env.mode)
     }
     
     var body: some View {

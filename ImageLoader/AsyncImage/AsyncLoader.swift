@@ -20,7 +20,6 @@ final class AsyncLoader: ImageLoadable {
         if let url = URL(string: "https://image.tmdb.org/t/p/w780/\(imageName)") {
             cancelable = session.dataTaskPublisher(for: url)
                 .receive(on: RunLoop.main)
-//                .retry(2)
                 .sink(
                     receiveCompletion: { completion in
                         switch completion {

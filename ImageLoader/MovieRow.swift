@@ -43,7 +43,7 @@ struct MovieRow: View {
 #if DEBUG
 struct MovieRow_Previews: PreviewProvider {
     static var previews: some View {
-        let movies = MovieResults().fetchResults(mode: .PreviewMode)
+        let movies = MovieCollection().fetchMovies(mode: .PreviewMode)
         return ForEach(ColorScheme.allCases, id: \.self) { colorScheme in
             Group {
                 MovieRow(movie: movies[0])

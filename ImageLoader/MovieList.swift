@@ -23,7 +23,7 @@ struct MovieList: View {
 #if DEBUG
 struct MovieList_Previews: PreviewProvider {
     static var previews: some View {
-        let movies = MovieResults().fetchResults(mode: .PreviewMode)
+        let movies = MovieCollection().fetchMovies(mode: .PreviewMode)
         let selectMovies = [movies[0], movies[2], movies[3]]
         return MovieList(movies: selectMovies)
             .previewLayout(.sizeThatFits)

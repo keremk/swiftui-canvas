@@ -9,44 +9,39 @@
 import Foundation
 import Combine
 
-final class MovieResults: ObservableObject {
-    @Published var movies: [Movie] = []
-    var cancelable: AnyCancellable? = nil
+final class MovieCollection: ObservableObject {
+    @Published var movieResponse: MovieResponse? = nil
     
-    func fetchResults(mode: EnvironmentConfig.Mode) -> [Movie] {
-        switch mode {
-#if DEBUG
-        case .PreviewMode:
-            let movieResponse: MovieResponse = loadPreviewData("movies.json")
-            return movieResponse.results
-#endif
-        case .ReleaseMode:
-            return fetchResults()
-        }
+    private var disposables = Set<AnyCancellable>()
+    
+    func fetchMovies(mode: EnvironmentConfig.Mode) -> [Movie] {
+        let response: MovieResponse? = fetch(mode: mode, previewFile: "movies.json", fetcher: fetchResults)
+        return response?.results ?? []
     }
     
-    private func fetchResults() -> [Movie] {
-        if movies != [] {
-            return movies
+    private func fetchResults() -> MovieResponse? {
+        if movieResponse != nil {
+            return movieResponse
         }
         guard
             let url = buildMoviesEndpoint()
         else {
-            return []
+            return MovieResponse.empty()
         }
         let config = URLSessionConfiguration.ephemeral
         let session = URLSession(configuration: config)
         let decoder = JSONDecoder()
         decoder.keyDecodingStrategy = .convertFromSnakeCase
-        cancelable = session.dataTaskPublisher(for: URLRequest(url: url))
+        session.dataTaskPublisher(for: URLRequest(url: url))
             .receive(on: RunLoop.main)
             .map { $0.data }
             .decode(type: MovieResponse.self, decoder: useDecoder())
-            .replaceError(with: MovieResponse(page: 0, totalResults: 0, totalPages: 0, results: []))
+            .replaceError(with: MovieResponse.empty())
             .sink(receiveValue: { [weak self] movieResponse in
-                self?.movies = movieResponse.results
+                self?.movieResponse = movieResponse
             })
-        return movies
+            .store(in: &disposables)
+        return movieResponse
     }
     
     private func buildMoviesEndpoint() -> URL? {

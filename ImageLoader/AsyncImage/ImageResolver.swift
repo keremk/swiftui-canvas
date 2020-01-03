@@ -31,7 +31,7 @@ final class ImageResolver: ObservableObject, ImageResolverDelegate {
             loader = PreviewLoader()
             break
 #endif
-        case .RuntimeMode:
+        case .ReleaseMode:
             loader = AsyncLoader()
             break
         }

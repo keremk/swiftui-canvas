@@ -9,18 +9,40 @@
 import SwiftUI
 
 struct ContentView: View {
-    var movies: [Movie]
+    @EnvironmentObject private var env: EnvironmentConfig
+    @ObservedObject var movieResults: MovieResults
+    
+    init() {
+        self.movieResults = MovieResults()
+    }
+    
+    var movies: [Movie] {
+        return movieResults.fetchResults(mode: env.mode)
+    }
     
     var body: some View {
-        MovieList(movies: movies)
+        NavigationView {
+            MovieList(movies: movies)
+            .navigationBarTitle("Popular Movies")
+        }
     }
 }
 
+#if DEBUG
+let deviceNames: [String] = [
+    "iPhone SE",
+    "iPhone 11"
+]
+
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(movies: [
-                Movie(id: 1, title: "Transformers", posterName: "ykIZB9dYBIKV13k5igGFncT5th6"),
-                Movie(id: 2, title: "Angel Has Fallen", posterName: "fapXd3v9qTcNBTm39ZC4KUVQDNf")])
-            .environmentObject(EnvironmentConfig(mode: .PreviewMode))
+        ForEach(deviceNames, id: \.self) { deviceName in
+            ContentView()
+            .previewDevice(PreviewDevice(rawValue: deviceName))
+            .previewDisplayName("Device: \(deviceName)")
+        }
+        .environmentObject(EnvironmentConfig(mode: .PreviewMode))
+
     }
 }
+#endif

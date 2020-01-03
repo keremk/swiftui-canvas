@@ -20,12 +20,15 @@ struct MovieList: View {
     }
 }
 
+#if DEBUG
 struct MovieList_Previews: PreviewProvider {
     static var previews: some View {
-        MovieList(
-            movies: [
-                Movie(id: 1, title: "Transformers", posterName: "ykIZB9dYBIKV13k5igGFncT5th6"),
-                Movie(id: 2, title: "Angel Has Fallen", posterName: "fapXd3v9qTcNBTm39ZC4KUVQDNf")]
-        ).environmentObject(EnvironmentConfig(mode: .PreviewMode))
+        let movies = MovieResults().fetchResults(mode: .PreviewMode)
+        let selectMovies = [movies[0], movies[2], movies[3]]
+        return MovieList(movies: selectMovies)
+            .previewLayout(.sizeThatFits)
+            .environment(\.colorScheme, .light)
+            .environmentObject(EnvironmentConfig(mode: .PreviewMode))
     }
 }
+#endif

@@ -79,5 +79,7 @@ fastlane/test_output
 # https://github.com/johnno1962/injectionforxcode
 
 iOSInjectionProject/
+# Do not store the API Key in git
+ImageLoader/AppSecrets.swift
 
 # End of https://www.gitignore.io/api/swift

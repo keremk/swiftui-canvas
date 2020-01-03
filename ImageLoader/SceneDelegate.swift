@@ -20,13 +20,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
 
         // Create the SwiftUI view that provides the window contents.
-        let config = EnvironmentConfig(mode: .RuntimeMode)
-        let movies = [
-            Movie(id: 1, title: "Transformers", posterName: "ykIZB9dYBIKV13k5igGFncT5th6"),
-            Movie(id: 2, title: "Angel Has Fallen", posterName: "fapXd3v9qTcNBTm39ZC4KUVQDNf")
-        ]
+        let config = EnvironmentConfig(mode: .ReleaseMode)
+//        let movies = [
+//            Movie(id: 1, title: "Transformers", posterName: "ykIZB9dYBIKV13k5igGFncT5th6"),
+//            Movie(id: 2, title: "Angel Has Fallen", posterName: "fapXd3v9qTcNBTm39ZC4KUVQDNf")
+//        ]
         
-        let contentView = ContentView(movies: movies).environmentObject(config)
+        let contentView = ContentView().environmentObject(config)
 
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {

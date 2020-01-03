@@ -10,7 +10,7 @@ import Foundation
 
 final class EnvironmentConfig: ObservableObject {
     enum Mode {
-        case RuntimeMode
+        case ReleaseMode
 #if DEBUG
         case PreviewMode
 #endif

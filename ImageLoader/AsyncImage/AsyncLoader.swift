@@ -15,10 +15,12 @@ final class AsyncLoader: ImageLoadable {
     var cancelable: AnyCancellable? = nil
 
     func load(imageName: String) -> CGImage? {
-        if let url = URL(string: "https://image.tmdb.org/t/p/w780/\(imageName).jpg") {
-            cancelable = URLSession.shared.dataTaskPublisher(for: url)
+        let config = URLSessionConfiguration.ephemeral
+        let session = URLSession(configuration: config)
+        if let url = URL(string: "https://image.tmdb.org/t/p/w780/\(imageName)") {
+            cancelable = session.dataTaskPublisher(for: url)
                 .receive(on: RunLoop.main)
-                .retry(2)
+//                .retry(2)
                 .sink(
                     receiveCompletion: { completion in
                         switch completion {

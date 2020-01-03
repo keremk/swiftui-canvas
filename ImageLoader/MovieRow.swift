@@ -13,22 +13,47 @@ struct MovieRow: View {
     
     var body: some View {
         HStack {
-            AsyncImage(imageName: movie.posterName)
+            MoviePoster(imageName: movie.posterName)
                 .frame(width: 97.5, height: 146.25, alignment: Alignment.center)
-                .padding()
-            Spacer()
-            Text(verbatim: movie.title).padding()
+                
+            VStack(alignment: .leading) {
+                Text(verbatim: movie.title)
+                    .font(.headline)
+                    .padding()
+                HStack {
+                    Text(verbatim: movie.genreLine)
+                        .font(.caption)
+                        .padding([.horizontal])
+                        .lineLimit(1)
+                    Spacer()
+                    Text(verbatim: movie.releaseYear)
+                        .font(.caption)
+                        .padding([.horizontal])
+                }
+                Text(verbatim: movie.overview)
+                    .font(.subheadline)
+                    .padding()
+            }
         }
+        .frame(width: nil, height: 180, alignment: .center)
+        .background(Color(.systemBackground))
     }
 }
 
+#if DEBUG
 struct MovieRow_Previews: PreviewProvider {
     static var previews: some View {
-        let movie1 = Movie(id: 1, title: "Transformers - Age of Extinction", posterName:"ykIZB9dYBIKV13k5igGFncT5th6")
-        return Group {
-            MovieRow(movie: movie1)
+        let movies = MovieResults().fetchResults(mode: .PreviewMode)
+        return ForEach(ColorScheme.allCases, id: \.self) { colorScheme in
+            Group {
+                MovieRow(movie: movies[0])
+                MovieRow(movie: movies[2])
+            }
+            .environment(\.colorScheme, colorScheme)
+            .previewDisplayName("Color scheme: \(colorScheme)")
         }
-        .previewLayout(.fixed(width: 400, height: 160))
+        .previewLayout(.sizeThatFits)
         .environmentObject(EnvironmentConfig(mode: .PreviewMode))
     }
 }
+#endif

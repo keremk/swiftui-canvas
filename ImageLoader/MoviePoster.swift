@@ -1,14 +1,16 @@
 //
-//  SwiftUIView.swift
+//  MoviePoster.swift
 //  ImageLoader
 //
-//  Created by Kerem Karatal on 12/27/19.
-//  Copyright © 2019 Kerem Karatal. All rights reserved.
+//  Created by Kerem Karatal on 1/3/20.
+//  Copyright © 2020 Kerem Karatal. All rights reserved.
 //
+
+import Foundation
 
 import SwiftUI
 
-struct AsyncImage: View {
+struct MoviePoster: View {
     let imageName: String
     let placeholder = UIImage(named: "placeholder.jpg")!.cgImage!
     
@@ -25,14 +27,20 @@ struct AsyncImage: View {
     }
     
     var body: some View {
-        Image(image ?? placeholder, scale: 1.0, label: Text("")).resizable()
+        Image(image ?? placeholder, scale: 1.0, label: Text("Movie Poster"))
+            .resizable()
+            .cornerRadius(5)
+            .shadow(radius: 5, x:5, y:5)
     }
 }
 
-struct AsyncImage_Previews: PreviewProvider {
+#if DEBUG
+struct MoviePoster_Previews: PreviewProvider {
     static var previews: some View {
-        return AsyncImage(imageName: "ykIZB9dYBIKV13k5igGFncT5th6")
-            .frame(width: 390.0, height: 585.0, alignment: Alignment.center)
+        return MoviePoster(imageName: "56zTpe2xvaA4alU51sRWPoKPYZy")
+            .aspectRatio(contentMode: .fit)
+            .previewLayout(.sizeThatFits)
             .environmentObject(EnvironmentConfig(mode: .PreviewMode))
     }
 }
+#endif

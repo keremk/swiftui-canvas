@@ -9,6 +9,6 @@
 import SwiftUI
 
 protocol ImageLoadable {
-    func load(imageName: String) -> CGImage?
+    func load(name: String, size: ImageSizeable) -> CGImage?
     var delegate: ImageResolverDelegate? { get set }
 }

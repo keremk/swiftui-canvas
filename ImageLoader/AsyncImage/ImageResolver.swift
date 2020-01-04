@@ -14,12 +14,19 @@ protocol ImageResolverDelegate: class {
 
 final class ImageResolver: ObservableObject, ImageResolverDelegate {
     @Published var image: CGImage?
+    private let name: String
+    private let size: ImageSizeable
+    
+    init(name: String, size: ImageSizeable) {
+        self.name = name
+        self.size = size
+    }
     
     func didLoad(image: CGImage?) {
         self.image = image
     }
 
-    func load(imageName: String, mode: EnvironmentConfig.Mode) -> CGImage? {
+    func load(mode: EnvironmentConfig.Mode) -> CGImage? {
         if let image = self.image {
             return image
         }
@@ -37,6 +44,6 @@ final class ImageResolver: ObservableObject, ImageResolverDelegate {
         }
         loader.delegate = self
 
-        return loader.load(imageName: imageName)
+        return loader.load(name: name, size: size)
     }
 }

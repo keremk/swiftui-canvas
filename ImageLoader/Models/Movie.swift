@@ -42,7 +42,7 @@ struct Movie: Hashable, Codable, Identifiable {
     let video: Bool
     let adult: Bool
     let originalLanguage: String
-    let genreIds: [Int]
+    let genreIds: [Int]?
     let releaseDate: Date
 
     private let genreMap = [
@@ -66,6 +66,23 @@ struct Movie: Hashable, Codable, Identifiable {
         10752: "War",
         37: "Western"
     ]
+    
+    static func empty() -> Movie {
+        return Movie(id: 0,
+                     title: "",
+                     overview: "",
+                     originalTitle: "",
+                     posterPath: "",
+                     backdropPath: "",
+                     popularity: 0.0,
+                     voteCount: 0,
+                     voteAverage: 0.0,
+                     video: false,
+                     adult: false,
+                     originalLanguage: "",
+                     genreIds: [],
+                     releaseDate: Date.distantPast)
+    }
 }
 
 // For simplicity sharing the data object movie with view model for movie
@@ -84,12 +101,12 @@ extension Movie {
         return "\(dateComponents.year ?? 1900)"
     }
     
-    var genres: [String] {
-        return genreIds.map { genreMap[$0] ?? "Unknown" }
+    var genreNames: [String] {
+        return genreIds?.map { genreMap[$0] ?? "Unknown" } ?? ["Unknown"]
     }
     
     var genreLine: String {
-        let genreLine = genres.reduce("") { (acc, genre) -> String in
+        let genreLine = genreNames.reduce("") { (acc, genre) -> String in
             "\(genre), \(acc)"
         }
         let index = genreLine.index(genreLine.endIndex, offsetBy: -2)

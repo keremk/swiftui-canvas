@@ -1,43 +1,40 @@
 //
-//  MoviePoster.swift
+//  MovieBackdrop.swift
 //  ImageLoader
 //
-//  Created by Kerem Karatal on 1/3/20.
+//  Created by Kerem Karatal on 1/4/20.
 //  Copyright © 2020 Kerem Karatal. All rights reserved.
 //
 
-import Foundation
-
 import SwiftUI
 
-struct MoviePoster: View {
+struct MovieBackdrop: View {
     let imageName: String
-    let placeholder = UIImage(named: "placeholder.jpg")!.cgImage!
+    let placeholder = UIImage(named: "MovieBackdrop.jpg")!.cgImage!
     
     @EnvironmentObject private var env: EnvironmentConfig
     @ObservedObject private var loader: ImageResolver
     
     init(imageName: String) {
         self.imageName = imageName
-        self.loader = ImageResolver()
+        self.loader = ImageResolver(name: imageName, size: TMDBBackdropSize.large)
     }
     
     var image: CGImage? {
-        return loader.load(imageName: imageName, mode: env.mode)
+        return loader.load(mode: env.mode)
     }
     
     var body: some View {
-        Image(image ?? placeholder, scale: 1.0, label: Text("Movie Poster"))
+        Image(image ?? placeholder, scale: 1.0, label: Text("Movie Backdrop"))
             .resizable()
-            .cornerRadius(5)
-            .shadow(radius: 5, x:5, y:5)
+            .shadow(radius: 5, x:0, y:8)
     }
 }
 
 #if DEBUG
-struct MoviePoster_Previews: PreviewProvider {
+struct MovieBackdrop_Previews: PreviewProvider {
     static var previews: some View {
-        return MoviePoster(imageName: "56zTpe2xvaA4alU51sRWPoKPYZy")
+        MovieBackdrop(imageName: "5Iw7zQTHVRBOYpA0V6z0yypOPZh")
             .aspectRatio(contentMode: .fit)
             .previewLayout(.sizeThatFits)
             .environmentObject(EnvironmentConfig(mode: .PreviewMode))

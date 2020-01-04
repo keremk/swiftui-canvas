@@ -14,10 +14,11 @@ final class AsyncLoader: ImageLoadable {
     weak var delegate: ImageResolverDelegate?
     var cancelable: AnyCancellable? = nil
 
-    func load(imageName: String) -> CGImage? {
+    func load(name: String, size: ImageSizeable) -> CGImage? {
         let config = URLSessionConfiguration.ephemeral
         let session = URLSession(configuration: config)
-        if let url = URL(string: "https://image.tmdb.org/t/p/w780/\(imageName)") {
+        let sizeDesc = size.getSizeString()
+        if let url = URL(string: "https://image.tmdb.org/t/p/\(sizeDesc)/\(name)") {
             cancelable = session.dataTaskPublisher(for: url)
                 .receive(on: RunLoop.main)
                 .sink(
@@ -26,7 +27,7 @@ final class AsyncLoader: ImageLoadable {
                         case .finished:
                             break
                         case .failure(_):
-                            os_log("Error loading image %{PUBLIC}@", log: .default, type: .error, imageName)
+                            os_log("Error loading image %{PUBLIC}@", log: .default, type: .error, name)
                             break
                         }
                     },

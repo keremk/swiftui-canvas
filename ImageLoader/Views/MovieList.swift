@@ -14,7 +14,9 @@ struct MovieList: View {
     var body: some View {
         List {
             ForEach(movies) { movie in
-                MovieRow(movie: movie)
+                NavigationLink(destination: MovieDetail(movie: movie)) {
+                    MovieRow(movie: movie)
+                }
             }
         }
     }

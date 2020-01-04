@@ -12,11 +12,12 @@ import SwiftUI
 final class PreviewLoader: ImageLoadable {
     weak var delegate: ImageResolverDelegate?
 
-    func load(imageName: String) -> CGImage? {
+     func load(name: String, size: ImageSizeable) -> CGImage? {
         guard
-            let image = UIImage(named: imageName)?.cgImage
+            let image = UIImage(named: name)?.cgImage
         else {
-            return UIImage(named: "PreviewPlaceholder")?.cgImage
+            let previewName = "PreviewPlaceholder_\(size.getSizeString())"
+            return UIImage(named: previewName)?.cgImage
         }
         return image
     }

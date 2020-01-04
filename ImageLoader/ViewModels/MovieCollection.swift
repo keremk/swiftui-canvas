@@ -15,11 +15,7 @@ final class MovieCollection: ObservableObject {
     let mode: EnvironmentConfig.Mode
     
     init(service: MoviesFetchable? = nil) {
-        if service == nil {
-            self.mode = .PreviewMode
-        } else {
-            self.mode = .ReleaseMode
-        }
+        self.mode = (service == nil) ? .PreviewMode : .ReleaseMode
         self.moviesFetchable = service
     }
     

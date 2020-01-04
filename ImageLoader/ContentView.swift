@@ -12,12 +12,8 @@ struct ContentView: View {
     @EnvironmentObject private var env: EnvironmentConfig
     @ObservedObject var movieCollection: MovieCollection
     
-    init() {
-        self.movieCollection = MovieCollection()
-    }
-    
     var movies: [Movie] {
-        return movieCollection.fetchMovies(mode: env.mode)
+        return movieCollection.fetchMovies()
     }
     
     var body: some View {
@@ -37,7 +33,7 @@ let deviceNames: [String] = [
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ForEach(deviceNames, id: \.self) { deviceName in
-            ContentView()
+            ContentView(movieCollection: MovieCollection())
             .previewDevice(PreviewDevice(rawValue: deviceName))
             .previewDisplayName("Device: \(deviceName)")
         }

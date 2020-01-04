@@ -11,49 +11,35 @@ import Combine
 
 final class MovieCollection: ObservableObject {
     @Published var movieResponse: MovieResponse? = nil
+    let moviesFetchable: MoviesFetchable?
+    let mode: EnvironmentConfig.Mode
+    
+    init(service: MoviesFetchable? = nil) {
+        if service == nil {
+            self.mode = .PreviewMode
+        } else {
+            self.mode = .ReleaseMode
+        }
+        self.moviesFetchable = service
+    }
     
     private var disposables = Set<AnyCancellable>()
     
-    func fetchMovies(mode: EnvironmentConfig.Mode) -> [Movie] {
-        let response: MovieResponse? = fetch(mode: mode, previewFile: "movies.json", fetcher: fetchResults)
+    func fetchMovies() -> [Movie] {
+        let response: MovieResponse? = fetch(mode: mode, previewFile: "movies.json", fetcher: fetchResponse)
         return response?.results ?? []
     }
     
-    private func fetchResults() -> MovieResponse? {
+    private func fetchResponse() -> MovieResponse? {
         if movieResponse != nil {
             return movieResponse
         }
-        guard
-            let url = buildMoviesEndpoint()
-        else {
-            return MovieResponse.empty()
-        }
-        let config = URLSessionConfiguration.ephemeral
-        let session = URLSession(configuration: config)
-        let decoder = JSONDecoder()
-        decoder.keyDecodingStrategy = .convertFromSnakeCase
-        session.dataTaskPublisher(for: URLRequest(url: url))
-            .receive(on: RunLoop.main)
-            .map { $0.data }
-            .decode(type: MovieResponse.self, decoder: useDecoder())
+        moviesFetchable?.fetchMovies()
             .replaceError(with: MovieResponse.empty())
             .sink(receiveValue: { [weak self] movieResponse in
                 self?.movieResponse = movieResponse
             })
             .store(in: &disposables)
         return movieResponse
-    }
-    
-    private func buildMoviesEndpoint() -> URL? {
-        var urlComponents = URLComponents()
-        urlComponents.host = "api.themoviedb.org"
-        urlComponents.scheme = "https"
-        urlComponents.path = "/3/discover/movie"
-        urlComponents.queryItems = [
-            URLQueryItem(name: "api_key", value: AppSecrets.TMDBApiSecret),
-            URLQueryItem(name: "page", value: "1"),
-            URLQueryItem(name: "sort_by", value: "popularity.desc")
-        ]
-        return urlComponents.url
     }
 }

@@ -56,6 +56,12 @@
 		5D35173623BFBE3C00894BB8 /* MovieDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D35173523BFBE3C00894BB8 /* MovieDetails.swift */; };
 		5D35173723BFBE3C00894BB8 /* MovieDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D35173523BFBE3C00894BB8 /* MovieDetails.swift */; };
 		5D35173823BFBE3C00894BB8 /* MovieDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D35173523BFBE3C00894BB8 /* MovieDetails.swift */; };
+		5D35173B23BFDDAB00894BB8 /* TMDBImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D35173A23BFDDAB00894BB8 /* TMDBImages.swift */; };
+		5D35173C23BFDDAB00894BB8 /* TMDBImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D35173A23BFDDAB00894BB8 /* TMDBImages.swift */; };
+		5D35173D23BFDDAB00894BB8 /* TMDBImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D35173A23BFDDAB00894BB8 /* TMDBImages.swift */; };
+		5D35173F23BFDEA900894BB8 /* TMDBService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D35173E23BFDEA900894BB8 /* TMDBService.swift */; };
+		5D35174023BFDEA900894BB8 /* TMDBService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D35173E23BFDEA900894BB8 /* TMDBService.swift */; };
+		5D35174123BFDEA900894BB8 /* TMDBService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D35173E23BFDEA900894BB8 /* TMDBService.swift */; };
 		5D9B292823B610A300589EAB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9B292723B610A300589EAB /* AppDelegate.swift */; };
 		5D9B292A23B610A300589EAB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9B292923B610A300589EAB /* SceneDelegate.swift */; };
 		5D9B292C23B610A300589EAB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9B292B23B610A300589EAB /* ContentView.swift */; };
@@ -101,6 +107,8 @@
 		5D35172B23BF6C9F00894BB8 /* Decoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Decoder.swift; sourceTree = "<group>"; };
 		5D35172F23BFA7D400894BB8 /* MoviePoster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviePoster.swift; sourceTree = "<group>"; };
 		5D35173523BFBE3C00894BB8 /* MovieDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetails.swift; sourceTree = "<group>"; };
+		5D35173A23BFDDAB00894BB8 /* TMDBImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBImages.swift; sourceTree = "<group>"; };
+		5D35173E23BFDEA900894BB8 /* TMDBService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBService.swift; sourceTree = "<group>"; };
 		5D9B292423B610A300589EAB /* ImageLoader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImageLoader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D9B292723B610A300589EAB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5D9B292923B610A300589EAB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -184,6 +192,8 @@
 		5D35173923BFDC5D00894BB8 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				5D35173A23BFDDAB00894BB8 /* TMDBImages.swift */,
+				5D35173E23BFDEA900894BB8 /* TMDBService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -395,6 +405,7 @@
 				5D35171723BE453000894BB8 /* MovieResponse.swift in Sources */,
 				5D9B292823B610A300589EAB /* AppDelegate.swift in Sources */,
 				5D3516E223B91ADD00894BB8 /* ImageLoadable.swift in Sources */,
+				5D35173B23BFDDAB00894BB8 /* TMDBImages.swift in Sources */,
 				5D35172C23BF6C9F00894BB8 /* Decoder.swift in Sources */,
 				5D35171D23BE453000894BB8 /* PreviewData.swift in Sources */,
 				5D35172423BE458600894BB8 /* AppSecrets.swift in Sources */,
@@ -402,6 +413,7 @@
 				5D35172823BF3D3C00894BB8 /* AppSecrets.sample.swift in Sources */,
 				5D3516E623B91B3A00894BB8 /* AsyncLoader.swift in Sources */,
 				5D3516F723BA205E00894BB8 /* MovieList.swift in Sources */,
+				5D35173F23BFDEA900894BB8 /* TMDBService.swift in Sources */,
 				5D35173023BFA7D400894BB8 /* MoviePoster.swift in Sources */,
 				5D3516DE23B91A9E00894BB8 /* PreviewLoader.swift in Sources */,
 				5D9B292A23B610A300589EAB /* SceneDelegate.swift in Sources */,
@@ -425,6 +437,7 @@
 				5D35172923BF3D3C00894BB8 /* AppSecrets.sample.swift in Sources */,
 				5D3516DF23B91A9E00894BB8 /* PreviewLoader.swift in Sources */,
 				5D3516EB23B91B7F00894BB8 /* ImageResolver.swift in Sources */,
+				5D35173C23BFDDAB00894BB8 /* TMDBImages.swift in Sources */,
 				5D3516E323B91ADD00894BB8 /* ImageLoadable.swift in Sources */,
 				5D3516EF23B925CF00894BB8 /* MovieRow.swift in Sources */,
 				5D35171E23BE453000894BB8 /* PreviewData.swift in Sources */,
@@ -433,6 +446,7 @@
 				5D35171B23BE453000894BB8 /* Movie.swift in Sources */,
 				5D35172D23BF6C9F00894BB8 /* Decoder.swift in Sources */,
 				5D9B293F23B610A800589EAB /* ImageLoaderTests.swift in Sources */,
+				5D35174023BFDEA900894BB8 /* TMDBService.swift in Sources */,
 				5D35173123BFA7D400894BB8 /* MoviePoster.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -449,6 +463,7 @@
 				5D35172A23BF3D3C00894BB8 /* AppSecrets.sample.swift in Sources */,
 				5D3516E023B91A9E00894BB8 /* PreviewLoader.swift in Sources */,
 				5D3516EC23B91B7F00894BB8 /* ImageResolver.swift in Sources */,
+				5D35173D23BFDDAB00894BB8 /* TMDBImages.swift in Sources */,
 				5D3516E423B91ADD00894BB8 /* ImageLoadable.swift in Sources */,
 				5D3516F023B925CF00894BB8 /* MovieRow.swift in Sources */,
 				5D35171F23BE453000894BB8 /* PreviewData.swift in Sources */,
@@ -457,6 +472,7 @@
 				5D35171C23BE453000894BB8 /* Movie.swift in Sources */,
 				5D35172E23BF6C9F00894BB8 /* Decoder.swift in Sources */,
 				5D9B294A23B610A800589EAB /* ImageLoaderUITests.swift in Sources */,
+				5D35174123BFDEA900894BB8 /* TMDBService.swift in Sources */,
 				5D35173223BFA7D400894BB8 /* MoviePoster.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

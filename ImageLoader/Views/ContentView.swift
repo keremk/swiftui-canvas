@@ -9,7 +9,6 @@
 import SwiftUI
 
 struct ContentView: View {
-    @EnvironmentObject private var env: EnvironmentConfig
     @ObservedObject var movieCollection: MovieCollection
     
     var movies: [Movie] {
@@ -38,7 +37,6 @@ struct ContentView_Previews: PreviewProvider {
             .previewDisplayName("Device: \(deviceName)")
         }
         .environmentObject(EnvironmentConfig(mode: .PreviewMode))
-
     }
 }
 #endif

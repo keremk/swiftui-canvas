@@ -13,10 +13,8 @@ struct MovieDetail: View {
     
     var body: some View {
         VStack {
-            MovieBackdrop(imageName: movie.backdropName)
-                .aspectRatio(contentMode: .fit)
-            Text(verbatim: movie.title)
-                .font(.title)
+            SummaryCard(movie: movie)
+                .padding([.vertical])
             Spacer()
         }
     }

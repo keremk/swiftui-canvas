@@ -13,15 +13,15 @@ struct MovieBackdrop: View {
     let placeholder = UIImage(named: "MovieBackdrop.jpg")!.cgImage!
     
     @EnvironmentObject private var env: EnvironmentConfig
-    @ObservedObject private var loader: ImageResolver
+    @ObservedObject private var resolver: ImageResolver
     
     init(imageName: String) {
         self.imageName = imageName
-        self.loader = ImageResolver(name: imageName, size: TMDBBackdropSize.large)
+        self.resolver = ImageResolver(name: imageName, size: TMDBBackdropSize.large)
     }
     
     var image: CGImage? {
-        return loader.load(mode: env.mode)
+        return resolver.fetchImage(mode: env.mode)
     }
     
     var body: some View {

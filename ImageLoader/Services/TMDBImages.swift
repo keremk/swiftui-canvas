@@ -8,10 +8,6 @@
 
 import Foundation
 
-protocol ImageSizeable {
-    func getSizeString() -> String
-}
-
 enum TMDBPosterSize: String, ImageSizeable {
     case original
     case small = "w154"

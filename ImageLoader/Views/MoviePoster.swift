@@ -6,8 +6,6 @@
 //  Copyright © 2020 Kerem Karatal. All rights reserved.
 //
 
-import Foundation
-
 import SwiftUI
 
 struct MoviePoster: View {
@@ -15,15 +13,15 @@ struct MoviePoster: View {
     let placeholder = UIImage(named: "placeholder.jpg")!.cgImage!
     
     @EnvironmentObject private var env: EnvironmentConfig
-    @ObservedObject private var loader: ImageResolver
+    @ObservedObject private var resolver: ImageResolver
     
     init(imageName: String) {
         self.imageName = imageName
-        self.loader = ImageResolver(name: imageName, size: TMDBPosterSize.large)
+        self.resolver = ImageResolver(name: imageName, size: TMDBPosterSize.large)
     }
     
     var image: CGImage? {
-        return loader.load(mode: env.mode)
+        return resolver.fetchImage(mode: env.mode)
     }
     
     var body: some View {

@@ -8,29 +8,49 @@
 
 import SwiftUI
 
+struct MovieListEmpty: View {
+    var body: some View {
+        VStack {
+            Spacer()
+            Text("No Movies Found")
+                .font(.headline)
+            Spacer()
+        }
+    }
+}
+
 struct MovieList: View {
     var movies: [Movie]
     
     var body: some View {
-        List {
-            ForEach(movies) { movie in
-                NavigationLink(destination: MovieDetail(movie: movie)) {
-                    MovieRow(movie: movie)
+        ZStack {
+            if movies.isEmpty {
+                MovieListEmpty()
+            } else {
+                List {
+                    ForEach(movies) { movie in
+                        NavigationLink(destination: MovieDetail(movie: movie)) {
+                            MovieRow(movie: movie)
+                        }
+                    }
                 }
             }
         }
     }
 }
 
-#if DEBUG
 struct MovieList_Previews: PreviewProvider {
     static var previews: some View {
         let movies = MovieCollection().fetchMovies()
-        let selectMovies = [movies[0], movies[2], movies[3]]
-        return MovieList(movies: selectMovies)
-            .previewLayout(.sizeThatFits)
-            .environment(\.colorScheme, .light)
-            .environmentObject(EnvironmentConfig(mode: .PreviewMode))
+        if movies.isEmpty {
+            return MovieList(movies: movies)
+                .previewLayout(.sizeThatFits)
+                .environment(\.colorScheme, .light)
+        } else {
+            let selectMovies = [movies[0], movies[2], movies[3]]
+            return MovieList(movies: selectMovies)
+                .previewLayout(.sizeThatFits)
+                .environment(\.colorScheme, .light)
+        }
     }
 }
-#endif

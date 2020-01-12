@@ -32,15 +32,8 @@ final class ImageResolver: ObservableObject {
     
     private var disposables = Set<AnyCancellable>()
     
-    func fetchImage(mode: EnvironmentConfig.Mode) -> CGImage? {
-        switch mode {
-#if DEBUG
-        case .PreviewMode:
-            return fetchPreview()
-#endif
-        case .ReleaseMode:
-            return fetch()
-        }
+    func fetchImage() -> CGImage? {
+        return fetchPreviewImage(imageName: name, size: size, fetcher: fetch)
     }
 
     private func fetch() -> CGImage? {
@@ -75,16 +68,4 @@ final class ImageResolver: ObservableObject {
         }
         return image
     }
-
-#if DEBUG
-    private func fetchPreview() -> CGImage? {
-        guard
-            let image = UIImage(named: name)?.cgImage
-        else {
-            let previewName = "PreviewPlaceholder_\(size.getSizeString())"
-            return UIImage(named: previewName)?.cgImage
-        }
-        return image
-    }
-#endif
 }

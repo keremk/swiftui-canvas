@@ -22,7 +22,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Create the SwiftUI view that provides the window contents.
         let movieCollection = MovieCollection(service: TMDBService())
         let contentView = ContentView(movieCollection: movieCollection)
-            .environmentObject(EnvironmentConfig(mode: .ReleaseMode))
 
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {

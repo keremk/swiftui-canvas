@@ -16,9 +16,6 @@
 		5D3516F723BA205E00894BB8 /* MovieList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3516F623BA205E00894BB8 /* MovieList.swift */; };
 		5D3516F823BA205E00894BB8 /* MovieList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3516F623BA205E00894BB8 /* MovieList.swift */; };
 		5D3516F923BA205E00894BB8 /* MovieList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3516F623BA205E00894BB8 /* MovieList.swift */; };
-		5D3516FB23BB88D000894BB8 /* EnvironmentConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3516FA23BB88D000894BB8 /* EnvironmentConfig.swift */; };
-		5D3516FC23BB88D000894BB8 /* EnvironmentConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3516FA23BB88D000894BB8 /* EnvironmentConfig.swift */; };
-		5D3516FD23BB88D000894BB8 /* EnvironmentConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3516FA23BB88D000894BB8 /* EnvironmentConfig.swift */; };
 		5D35170D23BE0B2500894BB8 /* movies.json in Resources */ = {isa = PBXBuildFile; fileRef = 5D35170C23BE0B2500894BB8 /* movies.json */; };
 		5D35171723BE453000894BB8 /* MovieResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D35171323BE452F00894BB8 /* MovieResponse.swift */; };
 		5D35171823BE453000894BB8 /* MovieResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D35171323BE452F00894BB8 /* MovieResponse.swift */; };
@@ -76,6 +73,9 @@
 		5DFE968D23C35B3B00B344C1 /* TMDBImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFE968C23C35B3B00B344C1 /* TMDBImageService.swift */; };
 		5DFE968E23C35B3B00B344C1 /* TMDBImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFE968C23C35B3B00B344C1 /* TMDBImageService.swift */; };
 		5DFE968F23C35B3B00B344C1 /* TMDBImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFE968C23C35B3B00B344C1 /* TMDBImageService.swift */; };
+		5DFE969E23CB14AD00B344C1 /* PreviewImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFE969D23CB14AD00B344C1 /* PreviewImage.swift */; };
+		5DFE969F23CB14AE00B344C1 /* PreviewImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFE969D23CB14AD00B344C1 /* PreviewImage.swift */; };
+		5DFE96A023CB14AE00B344C1 /* PreviewImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFE969D23CB14AD00B344C1 /* PreviewImage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,7 +99,6 @@
 		5D3516E923B91B7F00894BB8 /* ImageResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageResolver.swift; sourceTree = "<group>"; };
 		5D3516ED23B925CF00894BB8 /* MovieRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieRow.swift; sourceTree = "<group>"; };
 		5D3516F623BA205E00894BB8 /* MovieList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieList.swift; sourceTree = "<group>"; };
-		5D3516FA23BB88D000894BB8 /* EnvironmentConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentConfig.swift; sourceTree = "<group>"; };
 		5D35170C23BE0B2500894BB8 /* movies.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = movies.json; sourceTree = "<group>"; };
 		5D35171323BE452F00894BB8 /* MovieResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieResponse.swift; sourceTree = "<group>"; };
 		5D35171423BE452F00894BB8 /* Movie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
@@ -131,6 +130,7 @@
 		5D9B294923B610A800589EAB /* ImageLoaderUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoaderUITests.swift; sourceTree = "<group>"; };
 		5D9B294B23B610A800589EAB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5DFE968C23C35B3B00B344C1 /* TMDBImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBImageService.swift; sourceTree = "<group>"; };
+		5DFE969D23CB14AD00B344C1 /* PreviewImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewImage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,8 +181,8 @@
 		5D35173423BFBDD500894BB8 /* PreviewSupport */ = {
 			isa = PBXGroup;
 			children = (
-				5D3516FA23BB88D000894BB8 /* EnvironmentConfig.swift */,
 				5D35171523BE452F00894BB8 /* PreviewData.swift */,
+				5DFE969D23CB14AD00B344C1 /* PreviewImage.swift */,
 			);
 			path = PreviewSupport;
 			sourceTree = "<group>";
@@ -430,6 +430,7 @@
 				5D35172C23BF6C9F00894BB8 /* Decoder.swift in Sources */,
 				5D35171D23BE453000894BB8 /* PreviewData.swift in Sources */,
 				5D35172423BE458600894BB8 /* AppSecrets.swift in Sources */,
+				5DFE969E23CB14AD00B344C1 /* PreviewImage.swift in Sources */,
 				5D3516EA23B91B7F00894BB8 /* ImageResolver.swift in Sources */,
 				5D35172823BF3D3C00894BB8 /* AppSecrets.sample.swift in Sources */,
 				5D3516F723BA205E00894BB8 /* MovieList.swift in Sources */,
@@ -437,7 +438,6 @@
 				5D35173F23BFDEA900894BB8 /* TMDBService.swift in Sources */,
 				5D35173023BFA7D400894BB8 /* MoviePoster.swift in Sources */,
 				5D9B292A23B610A300589EAB /* SceneDelegate.swift in Sources */,
-				5D3516FB23BB88D000894BB8 /* EnvironmentConfig.swift in Sources */,
 				5D3516EE23B925CF00894BB8 /* MovieRow.swift in Sources */,
 				5D35175023C0161100894BB8 /* MovieBackdrop.swift in Sources */,
 				5D9B292C23B610A300589EAB /* ContentView.swift in Sources */,
@@ -453,6 +453,7 @@
 			files = (
 				5D3516F823BA205E00894BB8 /* MovieList.swift in Sources */,
 				5DFE968E23C35B3B00B344C1 /* TMDBImageService.swift in Sources */,
+				5DFE969F23CB14AE00B344C1 /* PreviewImage.swift in Sources */,
 				5D35173723BFBE3C00894BB8 /* MovieDetails.swift in Sources */,
 				5D35175E23C0FE2300894BB8 /* SummaryCard.swift in Sources */,
 				5D35172123BE453000894BB8 /* MovieCollection.swift in Sources */,
@@ -464,7 +465,6 @@
 				5D35175123C0161100894BB8 /* MovieBackdrop.swift in Sources */,
 				5D3516EF23B925CF00894BB8 /* MovieRow.swift in Sources */,
 				5D35171E23BE453000894BB8 /* PreviewData.swift in Sources */,
-				5D3516FC23BB88D000894BB8 /* EnvironmentConfig.swift in Sources */,
 				5D35172523BE458600894BB8 /* AppSecrets.swift in Sources */,
 				5D35171B23BE453000894BB8 /* Movie.swift in Sources */,
 				5D35172D23BF6C9F00894BB8 /* Decoder.swift in Sources */,
@@ -480,6 +480,7 @@
 			files = (
 				5D3516F923BA205E00894BB8 /* MovieList.swift in Sources */,
 				5DFE968F23C35B3B00B344C1 /* TMDBImageService.swift in Sources */,
+				5DFE96A023CB14AE00B344C1 /* PreviewImage.swift in Sources */,
 				5D35173823BFBE3C00894BB8 /* MovieDetails.swift in Sources */,
 				5D35175F23C0FE2300894BB8 /* SummaryCard.swift in Sources */,
 				5D35172223BE453000894BB8 /* MovieCollection.swift in Sources */,
@@ -491,7 +492,6 @@
 				5D35175223C0161100894BB8 /* MovieBackdrop.swift in Sources */,
 				5D3516F023B925CF00894BB8 /* MovieRow.swift in Sources */,
 				5D35171F23BE453000894BB8 /* PreviewData.swift in Sources */,
-				5D3516FD23BB88D000894BB8 /* EnvironmentConfig.swift in Sources */,
 				5D35172623BE458600894BB8 /* AppSecrets.swift in Sources */,
 				5D35171C23BE453000894BB8 /* Movie.swift in Sources */,
 				5D35172E23BF6C9F00894BB8 /* Decoder.swift in Sources */,
@@ -636,6 +636,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "";
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
@@ -760,6 +761,125 @@
 			};
 			name = Release;
 		};
+		5DFE969923C9DB4000B344C1 /* Preview */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = PREVIEW;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Preview;
+		};
+		5DFE969A23C9DB4000B344C1 /* Preview */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "ImageLoader/Preview\\ Content";
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = ImageLoader/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.codingventures.ImageLoader;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Preview;
+		};
+		5DFE969B23C9DB4000B344C1 /* Preview */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = ImageLoaderTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.codingventures.ImageLoaderTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ImageLoader.app/ImageLoader";
+			};
+			name = Preview;
+		};
+		5DFE969C23C9DB4000B344C1 /* Preview */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = ImageLoaderUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.codingventures.ImageLoaderUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = ImageLoader;
+			};
+			name = Preview;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -767,6 +887,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5D9B294C23B610A800589EAB /* Debug */,
+				5DFE969923C9DB4000B344C1 /* Preview */,
 				5D9B294D23B610A800589EAB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -776,6 +897,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5D9B294F23B610A800589EAB /* Debug */,
+				5DFE969A23C9DB4000B344C1 /* Preview */,
 				5D9B295023B610A800589EAB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -785,6 +907,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5D9B295223B610A800589EAB /* Debug */,
+				5DFE969B23C9DB4000B344C1 /* Preview */,
 				5D9B295323B610A800589EAB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -794,6 +917,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5D9B295523B610A800589EAB /* Debug */,
+				5DFE969C23C9DB4000B344C1 /* Preview */,
 				5D9B295623B610A800589EAB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;

@@ -8,18 +8,15 @@
 
 import Foundation
 
-func fetch<T: Decodable>(mode: EnvironmentConfig.Mode, previewFile: String, fetcher: () -> T) -> T {
-    switch mode {
-#if DEBUG
-    case .PreviewMode:
-        return loadPreviewData(previewFile)
+func fetchPreviewData<T: Decodable>(previewFile: String, fetcher: () -> T) -> T {
+#if PREVIEW
+    return loadPreviewData(previewFile)
+#else
+    return fetcher()
 #endif
-    case .ReleaseMode:
-        return fetcher()
-    }
 }
 
-#if DEBUG
+#if PREVIEW
 // Below is directly "borrowed" from https://developer.apple.com/tutorials/swiftui/composing-complex-interfaces
 func loadPreviewData<T: Decodable>(_ filename: String) -> T {
     let data: Data

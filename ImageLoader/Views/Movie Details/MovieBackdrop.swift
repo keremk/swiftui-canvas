@@ -12,7 +12,6 @@ struct MovieBackdrop: View {
     let imageName: String
     let placeholder = UIImage(named: "MovieBackdrop.jpg")!.cgImage!
     
-    @EnvironmentObject private var env: EnvironmentConfig
     @ObservedObject private var resolver: ImageResolver
     
     init(imageName: String) {
@@ -21,7 +20,7 @@ struct MovieBackdrop: View {
     }
     
     var image: CGImage? {
-        return resolver.fetchImage(mode: env.mode)
+        return resolver.fetchImage()
     }
     
     var body: some View {
@@ -31,13 +30,10 @@ struct MovieBackdrop: View {
     }
 }
 
-#if DEBUG
 struct MovieBackdrop_Previews: PreviewProvider {
     static var previews: some View {
         MovieBackdrop(imageName: "5Iw7zQTHVRBOYpA0V6z0yypOPZh")
             .aspectRatio(contentMode: .fit)
             .previewLayout(.sizeThatFits)
-            .environmentObject(EnvironmentConfig(mode: .PreviewMode))
     }
 }
-#endif

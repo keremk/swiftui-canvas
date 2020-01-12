@@ -68,7 +68,7 @@ struct Movie: Hashable, Codable, Identifiable {
     ]
     
     static func empty() -> Movie {
-        return Movie(id: 0,
+        return Movie(id: -1,
                      title: "",
                      overview: "",
                      originalTitle: "",
@@ -87,6 +87,9 @@ struct Movie: Hashable, Codable, Identifiable {
 
 // For simplicity sharing the data object movie with view model for movie
 extension Movie {
+    var isEmpty: Bool {
+        return id == -1
+    }
     var posterName: String {
         return stripSlash(posterPath)
     }

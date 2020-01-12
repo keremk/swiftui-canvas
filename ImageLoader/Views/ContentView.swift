@@ -36,7 +36,6 @@ struct ContentView_Previews: PreviewProvider {
             .previewDevice(PreviewDevice(rawValue: deviceName))
             .previewDisplayName("Device: \(deviceName)")
         }
-        .environmentObject(EnvironmentConfig(mode: .PreviewMode))
     }
 }
 #endif

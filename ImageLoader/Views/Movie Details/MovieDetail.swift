@@ -20,13 +20,14 @@ struct MovieDetail: View {
     }
 }
 
-#if DEBUG
 struct MovieDetail_Previews: PreviewProvider {
     static var previews: some View {
-        let movie = MovieDetails(movieId: 181808).fetchMovie()!
-        return MovieDetail(movie: movie)
+        if let movie = MovieDetails(movieId: 181808).fetchMovie() {
+            return MovieDetail(movie: movie)
+                    .previewLayout(.sizeThatFits)
+        } else {
+            return MovieDetail(movie: Movie.empty())
                 .previewLayout(.sizeThatFits)
-                .environmentObject(EnvironmentConfig(mode: .PreviewMode))
+        }
     }
 }
-#endif

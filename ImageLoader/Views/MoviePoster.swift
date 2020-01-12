@@ -12,7 +12,6 @@ struct MoviePoster: View {
     let imageName: String
     let placeholder = UIImage(named: "placeholder.jpg")!.cgImage!
     
-    @EnvironmentObject private var env: EnvironmentConfig
     @ObservedObject private var resolver: ImageResolver
     
     init(imageName: String) {
@@ -21,7 +20,7 @@ struct MoviePoster: View {
     }
     
     var image: CGImage? {
-        return resolver.fetchImage(mode: env.mode)
+        return resolver.fetchImage()
     }
     
     var body: some View {
@@ -32,13 +31,10 @@ struct MoviePoster: View {
     }
 }
 
-#if DEBUG
 struct MoviePoster_Previews: PreviewProvider {
     static var previews: some View {
         return MoviePoster(imageName: "56zTpe2xvaA4alU51sRWPoKPYZy")
             .aspectRatio(contentMode: .fit)
             .previewLayout(.sizeThatFits)
-            .environmentObject(EnvironmentConfig(mode: .PreviewMode))
     }
 }
-#endif

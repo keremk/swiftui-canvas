@@ -13,18 +13,16 @@ final class MovieDetails: ObservableObject {
     @Published var movie:Movie? = nil
     let movieId: Int
     let movieDetailsFetchable: MovieDetailsFetchable?
-    let mode: EnvironmentConfig.Mode
     
     private var disposables = Set<AnyCancellable>()
     
     init(movieId: Int, service: MovieDetailsFetchable? = nil) {
         self.movieId = movieId
-        self.mode = (service == nil) ? .PreviewMode : .ReleaseMode
         self.movieDetailsFetchable = service
     }
 
     func fetchMovie() -> Movie? {
-        let response: Movie? = fetch(mode: mode, previewFile: "movie_details.json", fetcher: fetchResponse)
+        let response: Movie? = fetchPreviewData(previewFile: "movie_details.json", fetcher: fetchResponse)
         return response
     }
     

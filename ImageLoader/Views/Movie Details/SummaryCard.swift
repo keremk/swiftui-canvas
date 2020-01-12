@@ -8,9 +8,25 @@
 
 import SwiftUI
 
-struct SummaryCard: View {
+struct SummaryCardEmpty: View {
     var movie: Movie
     
+    var body: some View {
+        VStack {
+            MovieBackdrop(imageName: "")
+                .aspectRatio(contentMode: .fit)
+            VStack(alignment: .leading) {
+                Text("No Movies")
+                    .font(.headline)
+                    .padding()
+            }
+        }
+    }
+}
+
+struct SummaryCardFull: View {
+    var movie: Movie
+
     var body: some View {
         VStack {
             MovieBackdrop(imageName: movie.backdropName)
@@ -37,11 +53,28 @@ struct SummaryCard: View {
     }
 }
 
+struct SummaryCard: View {
+    var movie: Movie
+    
+    var body: some View {
+        ZStack {
+            if movie.isEmpty {
+                SummaryCardEmpty(movie: movie)
+            } else {
+                SummaryCardFull(movie: movie)
+            }
+        }
+    }
+}
+
 struct SummaryCard_Previews: PreviewProvider {
     static var previews: some View {
-        let movie = MovieDetails(movieId: 181808).fetchMovie()!
-        return SummaryCard(movie: movie)
-            .previewLayout(.sizeThatFits)
-            .environmentObject(EnvironmentConfig(mode: .PreviewMode))
+        if let movie = MovieDetails(movieId: 181808).fetchMovie() {
+            return SummaryCard(movie: movie)
+                    .previewLayout(.sizeThatFits)
+        } else {
+            return SummaryCard(movie: Movie.empty())
+                .previewLayout(.sizeThatFits)
+        }
     }
 }
